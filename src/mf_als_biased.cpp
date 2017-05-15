@@ -13,7 +13,7 @@ using namespace Eigen;
 
 // const parameters 
 const int K = 10;
-const double lambda = 10;
+const double lambda = 5;
 const int MAX_ITER = 100;
 const double eps = 1e-4;
 
@@ -77,8 +77,9 @@ void readData() {
         assert(pfile != NULL);
         fscanf(pfile, "%d", &NTN);
         int user, item, rate;
+        int year, month, date, day;
         for (int i = 0; i < NTN; i++) {
-            fscanf(pfile, "%d,%d,%d", &user, &item, &rate);
+            fscanf(pfile, "%d,%d,%d,%d,%d,%d,%d", &user, &item, &rate, &year, &month, &date, &day);
             tn_tuple.emplace_back(user, item, rate);
         }
         fclose(pfile);
@@ -88,8 +89,9 @@ void readData() {
         assert(pfile != NULL);
         fscanf(pfile, "%d", &NTT);
         int user, item, rate;
+        int year, month, date, day;
         for (int i = 0; i < NTT; i++) {
-            fscanf(pfile, "%d,%d,%d", &user, &item, &rate);
+            fscanf(pfile, "%d,%d,%d,%d,%d,%d,%d", &user, &item, &rate, &year, &month, &date, &day);
             tt_tuple.emplace_back(user, item, rate);
         }
         fclose(pfile);
